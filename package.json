@@ -11,7 +11,9 @@
   "dependencies": {
     "@clerk/nextjs": "^6.12.2",
     "@prisma/client": "^6.4.1",
+    "axios": "^1.8.1",
     "next": "15.2.0",
+    "phaser": "^3.88.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "svix": "^1.61.0"
