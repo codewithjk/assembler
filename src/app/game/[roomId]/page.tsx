@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
+
 
 const GameComponent: React.FC = () => {
   const gameRef = useRef<Phaser.Game | null>(null);
@@ -51,8 +51,7 @@ const GameComponent: React.FC = () => {
           // this.add.tileSprite(400, 300, 800, 600, "basement");
 
           const map = this.make.tilemap({ key: "map" });
-          const tileset = map.addTilesetImage("Basement", "tiles");
-          const layer = map.createLayer("Ground", tileset);
+     
 
           const animsFrameRate = 15;
           this.anims.create({
@@ -243,14 +242,5 @@ const GameComponent: React.FC = () => {
   return <div id="game-container"></div>;
 };
 
-const GamePage: React.FC = () => {
-  return (
-    <div className="bg-amber-400">
-      <GameComponent />
-    </div>
-  );
-};
-
-// export default dynamic(() => Promise.resolve(GamePage), { ssr: false });
 
 export default GameComponent;
