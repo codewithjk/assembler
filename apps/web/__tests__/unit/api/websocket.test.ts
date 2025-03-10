@@ -1,4 +1,3 @@
-import { resolve } from "path";
 
 const WS_URL = "ws://localhost:3001";
 
