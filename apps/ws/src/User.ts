@@ -20,39 +20,56 @@ export class User {
     initHandlers() {
         this.ws.on("message", (data) => {
             const parsedData = JSON.parse(data.toString());
+            console.log(parsedData);
+            
             switch (parsedData.type) {
                 case "join":
-                    
-                    const spaceId = parsedData.payload.spaceId;
-                    const token = parsedData.payload.token;
-                    const userId = (jwt.verify(token, JWT_PASSWORD) as JwtPayload).userId;
-                    if (!userId) {
-                        this.ws.close();
-                        return;
-                    }
-                    this.userId = userId
-                    //TODO : find the space in the db and close the socket if space doesn't exists.
-                    this.spaceId = spaceId;
-                    RoomManager.getInstance().addUser(spaceId, this);
-                    this.send({
-                        type: "space-joined",
-                        payload: {
-                            spawn: {
+console.log("join", parsedData)
+                    try {
+                        const spaceId = parsedData.payload.spaceId;
+                        const token = parsedData.payload.token;
+                        // Attempt to verify the token
+                        const decoded = jwt.verify(token, JWT_PASSWORD) as JwtPayload;
+                        // if (!decoded || !decoded.userId) {
+                        //     throw new Error("Invalid token");
+                        // }
+                        const userId = decoded.userId;
+                        console.log(userId)
+                        if (!userId) {
+                            this.ws.close();
+                            return;
+                        }
+                        this.userId = userId
+                        //TODO : find the space in the db and close the socket if space doesn't exists.
+                        this.spaceId = spaceId;
+                        RoomManager.getInstance().addUser(spaceId, this);
+                        this.send({
+                            type: "space-joined",
+                            payload: {
+                                spawn: {
+                                    x: this.x,
+                                    y: this.y
+                                },
+                                users: RoomManager.getInstance().rooms.get(spaceId)?.filter(x => x.id !== this.id)?.map((u) => ({ id: u.id })) ?? []
+                            }
+                        });
+                        RoomManager.getInstance().broadcast({
+                            type: "user-joined",
+                            payload: {
+                                userId: this.userId,
                                 x: this.x,
                                 y: this.y
-                            },
-                            users: RoomManager.getInstance().rooms.get(spaceId)?.filter(x => x.id !== this.id)?.map((u) => ({ id: u.id })) ?? []
-                        }
-                    });
-                    RoomManager.getInstance().broadcast({
-                        type: "user-joined",
-                        payload: {
-                            userId : this.userId,
-                            x: this.x,
-                            y: this.y
-                        }
-                        
-                    }, this, this.spaceId!)
+                            }
+
+                        }, this, this.spaceId!)
+                    } catch (error) {
+                        // Send an error message to the client before closing
+                        this.send({
+                            type: "error",
+                            payload: { message: "Authentication failed. Invalid token.",error:error }
+                        });
+                        this.ws.close();
+                    }
                     break;
                 case "move":
                     const moveX = parsedData.payload.x;
