@@ -1,84 +1,83 @@
-# Turborepo starter
+# 2D Metaverse Project
 
-This Turborepo starter is maintained by the Turborepo core team.
+Welcome to the **2D Metaverse** project! This open-source project aims to create an immersive virtual space where users can design their avatars and interact in real-time in a 2D environment. Think of it as a virtual hangout space, much like [Gather](https://app.gather.town/), but fully customizable and open for everyone.
 
-## Using this example
+## 📝 Table of Contents
 
-Run the following command:
+- [2D Metaverse Project](#2d-metaverse-project)
+  - [📝 Table of Contents](#-table-of-contents)
+  - [🔍 About](#-about)
+  - [🚀 Features](#-features)
+  - [🛠️ Tech Stack](#️-tech-stack)
+  - [🚧 Getting Started](#-getting-started)
+    - [📋 Prerequisites](#-prerequisites)
+    - [💻 Installation](#-installation)
+    - [🏃‍♂️ Running](#️-running)
+  - [Contributing](#contributing)
 
-```sh
-npx create-turbo@latest
+## 🔍 About
+
+The 2D Metaverse project is an open-source platform where users can create personalized avatars, meet people virtually, and explore various virtual environments. It provides an interactive, customizable experience for users to hang out, play games, attend events, or simply chat in a virtual world. It is built with the latest technologies, ensuring scalability and ease of use for everyone.
+
+## 🚀 Features
+
+- **Create Custom Avatars**: Users can design and personalize their avatars to represent themselves.
+- **Real-Time Interaction**: Engage with other users in a shared virtual space.
+- **Customizable Environments**: Customize the environment to fit the needs of different use cases (events, meetings, games, etc.).
+- **Chat & Voice Support**: Communicate with text or voice while interacting in the metaverse.
+- **Multi-Platform Support**: Accessible via web browsers on both desktop and mobile devices.
+- **Open-Source & Customizable**: As an open-source project, you can fork, contribute, and adapt the code to your own needs.
+
+## 🛠️ Tech Stack
+
+The project is built with the following technologies:
+
+- **Frontend**: [Next.js](https://nextjs.org/) - React framework for server-side rendering and static site generation.
+- **Backend**: [Node.js](https://nodejs.org/) with [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) for real-time communication.
+- **State Management**: [Redux](https://redux.js.org/) for handling app state.
+- **Graphics**: [Phaser](https://phaser.io) for 2D rendering.
+- **Database**: [Postgres](https://www.postgresql.org) for real-time database and authentication.
+
+## 🚧 Getting Started
+
+To get started with the project, follow the instructions below:
+
+### 📋 Prerequisites
+
+Before setting up the project, ensure you have the following tools installed:
+
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [npm](https://www.npmjs.com/) for dependency management
+- [docker](https://www.docker.com)
+
+### 💻 Installation
+
+Clone the repository to your local machine:
+
+```bash
+git clone https://github.com/your-username/2d-metaverse.git
+cd 2d-metaverse
 ```
 
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+### 🏃‍♂️ Running
+```bash
+npm run dev
 ```
 
-### Develop
+## Contributing
 
-To develop all apps and packages, run the following command:
+We welcome contributions to the project! If you'd like to help improve the project, follow these steps:
 
-```
-cd my-turborepo
-pnpm dev
-```
+1. Fork the repository.
 
-### Remote Caching
+2. Create a new branch (git checkout -b feature/your-feature).
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+3. Make your changes.
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+4. Commit your changes (git commit -m 'Add your feature').
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+5. Push to the branch (git push origin feature/your-feature).
 
-```
-cd my-turborepo
-npx turbo login
-```
+6. Create a pull request describing your changes.
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+Please make sure to follow the code style and conventions used in the project. For major changes, it's a good idea to open an issue first to discuss what you'd like to change.

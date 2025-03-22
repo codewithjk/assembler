@@ -1,4 +1,9 @@
+import dynamic from 'next/dynamic'
 
+const Phaser = dynamic(
+  () => import('phaser'),
+  { ssr: false }
+)
 export default class GameScene extends Phaser.Scene {
     player!: Phaser.Physics.Arcade.Sprite;
     character!: Phaser.Physics.Arcade.Sprite;
