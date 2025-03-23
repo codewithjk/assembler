@@ -24,34 +24,35 @@ export function CreateRoomModal() {
       setError("Room ID cannot be empty.");
       return;
     }
+    router.push(`/game/${roomId}`);
     
-    try {
-      // Initialize WebSocket
-      wsRef.current = new WebSocket("ws://localhost:8001"); // Replace with actual WS URL
+    // try {
+    //   // Initialize WebSocket
+    //   wsRef.current = new WebSocket("ws://localhost:8001"); // Replace with actual WS URL
 
-      wsRef.current.onopen = () => {
-        wsRef.current?.send(
-          JSON.stringify({
-            type: "join",
-            payload: { spaceId: roomId, token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwidHlwZSI6InVzZXIiLCJ1c2VySWQiOiJqZWV2YW4xMjMiLCJpYXQiOjE1MTYyMzkwMjJ9.1-Th1tvy1MRJn-1RRTaoyQa41kWyB7rwRi30SrudDKo" },
-          })
-        );
-        router.push(`/game/${roomId}`);
-      };
+    //   wsRef.current.onopen = () => {
+    //     wsRef.current?.send(
+    //       JSON.stringify({
+    //         type: "join",
+    //         payload: { spaceId: roomId, token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwidHlwZSI6InVzZXIiLCJ1c2VySWQiOiJqZWV2YW4xMjMiLCJpYXQiOjE1MTYyMzkwMjJ9.1-Th1tvy1MRJn-1RRTaoyQa41kWyB7rwRi30SrudDKo" },
+    //       })
+    //     );
+    //     router.push(`/game/${roomId}`);
+    //   };
 
-      wsRef.current.onerror = (event) => {
-        setError("WebSocket connection failed. Please try again.");
-        console.error("WebSocket error:", event);
-      };
+    //   wsRef.current.onerror = (event) => {
+    //     setError("WebSocket connection failed. Please try again.");
+    //     console.error("WebSocket error:", event);
+    //   };
 
-      wsRef.current.onmessage = (event) => {
-        const message = JSON.parse(event.data);
-        console.log("WebSocket message received:", message);
-      };
-    } catch (err) {
-      console.error("Error initializing WebSocket:", err);
-      setError("An unexpected error occurred.");
-    }
+    //   wsRef.current.onmessage = (event) => {
+    //     const message = JSON.parse(event.data);
+    //     console.log("WebSocket message received:", message);
+    //   };
+    // } catch (err) {
+    //   console.error("Error initializing WebSocket:", err);
+    //   setError("An unexpected error occurred.");
+    // }
   };
 
   return (
